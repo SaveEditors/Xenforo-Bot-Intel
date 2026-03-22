@@ -6,15 +6,15 @@
   </a>
 </p>
 
-<p align="center">
-  <img src="https://i.imgur.com/DG63BxF.png" alt="Bot Intel overview screenshot" />
-</p>
-
 > XenForo's default robot handling is based on static user-agent matching. When a crawler is not in that stock list, XenForo leaves it in the guest bucket instead of reclassifying it as bot traffic. The result is inflated guest counts, under-reported robot activity, and weaker visibility into crawler load.
 
 Bot Intel is a XenForo 2.3 add-on for forum operators who need better visibility into crawler traffic, more accurate guest counts, and practical controls for high-volume bot activity.
 
 It extends XenForo's stock robot handling with layered bot classification, live comparison against core detection, request pattern analysis, JSON exports, and configurable crawler throttling for aggressive families such as Ahrefs, Semrush, MJ12, DotBot, BLEXBot, and Common Crawl.
+
+<p align="center">
+  <img src="https://i.imgur.com/DG63BxF.png" alt="Bot Intel overview screenshot" width="50%" />
+</p>
 
 ## Status
 
