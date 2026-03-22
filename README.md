@@ -1,6 +1,6 @@
-# Bot Intel
-
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/saveeditors)
+
+# Bot Intel
 
 Bot Intel is a XenForo 2.3 add-on for forum operators who need better visibility into crawler traffic, more accurate guest counts, and practical controls for high-volume bot activity.
 
@@ -77,8 +77,4 @@ Release archives are stored in:
 - Pair Bot Intel with edge-layer controls such as Cloudflare rate limiting and targeted `robots.txt` rules for low-value crawl surfaces.
 - If you previously installed an older private preview under a different add-on ID, uninstall that preview before installing this public package.
 
-## Support
 
-If Bot Intel saves time or helps keep your forum stable under crawler load, support ongoing development here:
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/saveeditors)
