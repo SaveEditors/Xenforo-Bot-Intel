@@ -1,6 +1,6 @@
 # Bot Intel
 
-> XenForo's default robot handling is based on static user-agent matching. When a crawler is not in that stock list, XenForo leaves it in the guest bucket instead of reclassifying it as bot traffic. The result is inflated guest counts, under-reported robot activity, and weaker visibility into crawler load.
+> XenForo's default robot handling is based on static user-agent matching. When a crawler is not in that stock list, XenForo leaves it in the guest bucket instead of reclassifying it as bot traffic. The result is inflated guest counts, under-reported robot activity, and weaker visibility into crawler load. Bot Intel was created due to this design flaw.
 
 Bot Intel is a XenForo 2.3 add-on for forum operators who need better visibility into crawler traffic, more accurate guest counts, and practical controls for high-volume bot activity.
 
