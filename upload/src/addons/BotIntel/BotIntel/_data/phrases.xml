@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.botIntel" version_id="1000010" version_string="1.0b"><![CDATA[Bot Intel]]></phrase>
+  <phrase title="admin_navigation.botIntelPatterns" version_id="1000010" version_string="1.0b"><![CDATA[Patterns]]></phrase>
+  <phrase title="bot_intel_action" version_id="1000010" version_string="1.0b"><![CDATA[Action]]></phrase>
+  <phrase title="bot_intel_active_minutes" version_id="1000010" version_string="1.0b"><![CDATA[Active minutes]]></phrase>
+  <phrase title="bot_intel_aggressive_robots" version_id="1000010" version_string="1.0b"><![CDATA[Aggressive bots]]></phrase>
+  <phrase title="bot_intel_apply_filters" version_id="1000010" version_string="1.0b"><![CDATA[Apply filters]]></phrase>
+  <phrase title="bot_intel_back_overview" version_id="1000010" version_string="1.0b"><![CDATA[Back to overview]]></phrase>
+  <phrase title="bot_intel_blocked_requests" version_id="1000010" version_string="1.0b"><![CDATA[Interventions]]></phrase>
+  <phrase title="bot_intel_bot_intel_detections" version_id="1000010" version_string="1.0b"><![CDATA[Bot Intel detections]]></phrase>
+  <phrase title="bot_intel_burst_minute" version_id="1000010" version_string="1.0b"><![CDATA[Minute]]></phrase>
+  <phrase title="bot_intel_cf_bot_score" version_id="1000010" version_string="1.0b"><![CDATA[CF bot score]]></phrase>
+  <phrase title="bot_intel_classification" version_id="1000010" version_string="1.0b"><![CDATA[Classification]]></phrase>
+  <phrase title="bot_intel_detection_delta" version_id="1000010" version_string="1.0b"><![CDATA[Detection delta]]></phrase>
+  <phrase title="bot_intel_download_json" version_id="1000010" version_string="1.0b"><![CDATA[Download comparison JSON]]></phrase>
+  <phrase title="bot_intel_download_patterns_json" version_id="1000010" version_string="1.0b"><![CDATA[Download patterns JSON]]></phrase>
+  <phrase title="bot_intel_extra_robots_found" version_id="1000010" version_string="1.0b"><![CDATA[Extra robots found]]></phrase>
+  <phrase title="bot_intel_family_count" version_id="1000010" version_string="1.0b"><![CDATA[Families]]></phrase>
+  <phrase title="bot_intel_filtered_summary" version_id="1000010" version_string="1.0b"><![CDATA[Filtered summary]]></phrase>
+  <phrase title="bot_intel_filters" version_id="1000010" version_string="1.0b"><![CDATA[Filters]]></phrase>
+  <phrase title="bot_intel_fingerprint_count" version_id="1000010" version_string="1.0b"><![CDATA[Fingerprints]]></phrase>
+  <phrase title="bot_intel_first_seen" version_id="1000010" version_string="1.0b"><![CDATA[First seen]]></phrase>
+  <phrase title="bot_intel_guests_reclassified" version_id="1000010" version_string="1.0b"><![CDATA[Guests reclassified]]></phrase>
+  <phrase title="bot_intel_intervene_would" version_id="1000010" version_string="1.0b"><![CDATA[Intervene / would]]></phrase>
+  <phrase title="bot_intel_ip" version_id="1000010" version_string="1.0b"><![CDATA[IP address]]></phrase>
+  <phrase title="bot_intel_ip_count" version_id="1000010" version_string="1.0b"><![CDATA[IPs]]></phrase>
+  <phrase title="bot_intel_last_day" version_id="1000010" version_string="1.0b"><![CDATA[Last 24 hours]]></phrase>
+  <phrase title="bot_intel_last_hit" version_id="1000010" version_string="1.0b"><![CDATA[Last hit]]></phrase>
+  <phrase title="bot_intel_last_hour" version_id="1000010" version_string="1.0b"><![CDATA[Last hour]]></phrase>
+  <phrase title="bot_intel_last_seen" version_id="1000010" version_string="1.0b"><![CDATA[Last seen]]></phrase>
+  <phrase title="bot_intel_likely_robots" version_id="1000010" version_string="1.0b"><![CDATA[Likely bots]]></phrase>
+  <phrase title="bot_intel_live_comparison" version_id="1000010" version_string="1.0b"><![CDATA[Live comparison]]></phrase>
+  <phrase title="bot_intel_live_detection_rows" version_id="1000010" version_string="1.0b"><![CDATA[Live detection rows]]></phrase>
+  <phrase title="bot_intel_matching_hits" version_id="1000010" version_string="1.0b"><![CDATA[Matching hits]]></phrase>
+  <phrase title="bot_intel_minute_bursts" version_id="1000010" version_string="1.0b"><![CDATA[Same-minute bursts]]></phrase>
+  <phrase title="bot_intel_mode" version_id="1000010" version_string="1.0b"><![CDATA[Mode]]></phrase>
+  <phrase title="bot_intel_monitor_mode_notice" version_id="1000010" version_string="1.0b"><![CDATA[Bot Intel is in monitor-only mode. Traffic is still classified and logged, but rows marked “Would 429 throttle” or “Would 403 deny” are not currently blocked.]]></phrase>
+  <phrase title="bot_intel_no_matching_hits" version_id="1000010" version_string="1.0b"><![CDATA[No matching hits were found for the current filters.]]></phrase>
+  <phrase title="bot_intel_overview" version_id="1000010" version_string="1.0b"><![CDATA[Bot Intel Overview]]></phrase>
+  <phrase title="bot_intel_overview_desc" version_id="1000010" version_string="1.0b"><![CDATA[Compare XenForo's stock robot detection against Bot Intel live, review active visitor classifications, and inspect the crawlers and paths consuming board traffic.]]></phrase>
+  <phrase title="bot_intel_path" version_id="1000010" version_string="1.0b"><![CDATA[Path]]></phrase>
+  <phrase title="bot_intel_path_contains" version_id="1000010" version_string="1.0b"><![CDATA[Path contains]]></phrase>
+  <phrase title="bot_intel_patterns" version_id="1000010" version_string="1.0b"><![CDATA[Bot Intel Patterns]]></phrase>
+  <phrase title="bot_intel_patterns_desc" version_id="1000010" version_string="1.0b"><![CDATA[Filter Bot Intel activity by family, IP, user agent, path, action, and time window to isolate crawl waves, suspicious guests, and burst traffic.]]></phrase>
+  <phrase title="bot_intel_rate_limited_message" version_id="1000010" version_string="1.0b"><![CDATA[Requests from <strong>{robot}</strong> exceeded the allowed crawl rate for this XenForo site. Retry after {window} seconds or reduce the crawler's concurrency.]]></phrase>
+  <phrase title="bot_intel_rate_limited_title" version_id="1000010" version_string="1.0b"><![CDATA[Bot Intel rate limited]]></phrase>
+  <phrase title="bot_intel_reason" version_id="1000010" version_string="1.0b"><![CDATA[Reason]]></phrase>
+  <phrase title="bot_intel_recent_aggressive" version_id="1000010" version_string="1.0b"><![CDATA[Recent aggressive fingerprints]]></phrase>
+  <phrase title="bot_intel_request_method" version_id="1000010" version_string="1.0b"><![CDATA[Method]]></phrase>
+  <phrase title="bot_intel_requests" version_id="1000010" version_string="1.0b"><![CDATA[Requests]]></phrase>
+  <phrase title="bot_intel_reset_filters" version_id="1000010" version_string="1.0b"><![CDATA[Reset filters]]></phrase>
+  <phrase title="bot_intel_robot_family" version_id="1000010" version_string="1.0b"><![CDATA[Robot family]]></phrase>
+  <phrase title="bot_intel_score" version_id="1000010" version_string="1.0b"><![CDATA[Score]]></phrase>
+  <phrase title="bot_intel_top_families" version_id="1000010" version_string="1.0b"><![CDATA[Top robot families]]></phrase>
+  <phrase title="bot_intel_top_ips" version_id="1000010" version_string="1.0b"><![CDATA[Top IPs]]></phrase>
+  <phrase title="bot_intel_top_paths" version_id="1000010" version_string="1.0b"><![CDATA[Top crawled paths]]></phrase>
+  <phrase title="bot_intel_top_user_agents" version_id="1000010" version_string="1.0b"><![CDATA[Top user agents]]></phrase>
+  <phrase title="bot_intel_total_requests" version_id="1000010" version_string="1.0b"><![CDATA[Total tracked requests]]></phrase>
+  <phrase title="bot_intel_tracked_load" version_id="1000010" version_string="1.0b"><![CDATA[Tracked load]]></phrase>
+  <phrase title="bot_intel_user_agent" version_id="1000010" version_string="1.0b"><![CDATA[User agent]]></phrase>
+  <phrase title="bot_intel_user_agent_contains" version_id="1000010" version_string="1.0b"><![CDATA[User agent contains]]></phrase>
+  <phrase title="bot_intel_verified_robots" version_id="1000010" version_string="1.0b"><![CDATA[Verified robots]]></phrase>
+  <phrase title="bot_intel_view_patterns" version_id="1000010" version_string="1.0b"><![CDATA[View patterns]]></phrase>
+  <phrase title="bot_intel_window_hours" version_id="1000010" version_string="1.0b"><![CDATA[Window (hours)]]></phrase>
+  <phrase title="bot_intel_xenforo_detections" version_id="1000010" version_string="1.0b"><![CDATA[XenForo detections]]></phrase>
+  <phrase title="option.botIntelAggressiveHits" version_id="1000010" version_string="1.0b"><![CDATA[Default aggressive hit limit]]></phrase>
+  <phrase title="option.botIntelAggressiveWindow" version_id="1000010" version_string="1.0b"><![CDATA[Aggressive rate-limit window]]></phrase>
+  <phrase title="option.botIntelAhrefsAction" version_id="1000010" version_string="1.0b"><![CDATA[Ahrefs action]]></phrase>
+  <phrase title="option.botIntelAhrefsHits" version_id="1000010" version_string="1.0b"><![CDATA[Ahrefs hit limit]]></phrase>
+  <phrase title="option.botIntelCustomRobotSignatures" version_id="1000010" version_string="1.0b"><![CDATA[Custom verified robot signatures]]></phrase>
+  <phrase title="option.botIntelEnabled" version_id="1000010" version_string="1.0b"><![CDATA[Enable Bot Intel]]></phrase>
+  <phrase title="option.botIntelLogRetentionDays" version_id="1000010" version_string="1.0b"><![CDATA[Tracked hit retention]]></phrase>
+  <phrase title="option.botIntelMode" version_id="1000010" version_string="1.0b"><![CDATA[Bot Intel mode]]></phrase>
+  <phrase title="option.botIntelRateLimitedFamilies" version_id="1000010" version_string="1.0b"><![CDATA[Other rate-limited robot families]]></phrase>
+  <phrase title="option.botIntelTrackLikelyBotsAsRobots" version_id="1000010" version_string="1.0b"><![CDATA[Move likely bots out of guest counts]]></phrase>
+  <phrase title="option_explain.botIntelAggressiveHits" version_id="1000010" version_string="1.0b"><![CDATA[How many requests a rate-limited robot family or aggressive unknown bot can make within the window before Bot Intel returns 429.]]></phrase>
+  <phrase title="option_explain.botIntelAggressiveWindow" version_id="1000010" version_string="1.0b"><![CDATA[The rolling window, in seconds, used for known aggressive crawlers and high-confidence unknown bots.]]></phrase>
+  <phrase title="option_explain.botIntelAhrefsAction" version_id="1000010" version_string="1.0b"><![CDATA[Choose whether Ahrefs should only be classified, throttled with 429, or denied with 403 once it exceeds its dedicated rate limit.]]></phrase>
+  <phrase title="option_explain.botIntelAhrefsHits" version_id="1000010" version_string="1.0b"><![CDATA[How many Ahrefs requests from the same IP are allowed inside the aggressive window before the configured Ahrefs action is applied.]]></phrase>
+  <phrase title="option_explain.botIntelCustomRobotSignatures" version_id="1000010" version_string="1.0b"><![CDATA[One signature per line using <code>user-agent fragment = family key = optional label</code>. Matches here are treated as verified robots and moved out of guest counts.]]></phrase>
+  <phrase title="option_explain.botIntelEnabled" version_id="1000010" version_string="1.0b"><![CDATA[Turns on Bot Intel's stronger robot fingerprints, live XenForo comparison, likely-bot classification, request aggregation, and crawler throttling.]]></phrase>
+  <phrase title="option_explain.botIntelLogRetentionDays" version_id="1000010" version_string="1.0b"><![CDATA[How long to keep aggregated bot hit data for the Bot Intel dashboard and JSON exports.]]></phrase>
+  <phrase title="option_explain.botIntelMode" version_id="1000010" version_string="1.0b"><![CDATA[Use <strong>Monitor only</strong> to classify and log bots without returning 429 or 403. Use <strong>Enforce</strong> to apply the configured throttles and denies.]]></phrase>
+  <phrase title="option_explain.botIntelRateLimitedFamilies" version_id="1000010" version_string="1.0b"><![CDATA[One robot family per line. These families are throttled with 429 when they exceed the default aggressive hit limit.]]></phrase>
+  <phrase title="option_explain.botIntelTrackLikelyBotsAsRobots" version_id="1000010" version_string="1.0b"><![CDATA[When enabled, suspicious guests that pass the heuristic threshold are stored with <code>robot_key = unknown</code> so they stop inflating the guest count.]]></phrase>
+  <phrase title="option_group.botIntel" version_id="1000010" version_string="1.0b"><![CDATA[Bot Intel]]></phrase>
+  <phrase title="option_group.botIntel_description" version_id="1000010" version_string="1.0b"><![CDATA[Universal bot detection, request logging, live XenForo comparison, and crawler throttling for XenForo forums with inflated guest traffic.]]></phrase>
+</phrases>
+

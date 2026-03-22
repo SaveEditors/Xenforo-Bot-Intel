@@ -1,0 +1,24 @@
+{
+    "legacy_addon_id": "",
+    "title": "Bot Intel",
+    "description": "Live XenForo-vs-Bot Intel comparison, layered bot detection, crawler classification, and crawler throttling for XenForo 2.3 forums.",
+    "version_id": 1000010,
+    "version_string": "1.0b",
+    "dev": "@SaveEditors (Github)",
+    "dev_url": "https://github.com/SaveEditors",
+    "faq_url": "",
+    "support_url": "https://github.com/SaveEditors/Xenforo-Bot-Intel",
+    "extra_urls": [],
+    "require": {
+        "XF": [
+            2030010,
+            "XenForo 2.3.0+"
+        ],
+        "php": [
+            "8.0",
+            "PHP 8.0+"
+        ]
+    },
+    "icon": "fas fa-robot"
+}
+

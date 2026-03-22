@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Data\Robot" to_class="BotIntel\BotIntel\XF\Data\Robot" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\AbstractController" to_class="BotIntel\BotIntel\XF\Pub\Controller\AbstractController" execute_order="10" active="1"/>
+</class_extensions>
+

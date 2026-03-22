@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="botIntel" parent_navigation_id="tools" display_order="550" link="bot-intel" icon="fa-robot" admin_permission_id="viewLogs" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="botIntelPatterns" parent_navigation_id="botIntel" display_order="10" link="bot-intel/patterns" admin_permission_id="viewLogs" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>
+

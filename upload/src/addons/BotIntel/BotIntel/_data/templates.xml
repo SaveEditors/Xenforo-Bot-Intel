@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="bot_intel_overview" version_id="1000010" version_string="1.0b"><![CDATA[<xf:title>{{ phrase('bot_intel_overview') }}</xf:title>
+<xf:description>{{ phrase('bot_intel_overview_desc') }}</xf:description>
+<xf:pageaction>
+	<xf:button href="{{ link('bot-intel/patterns') }}">{{ phrase('bot_intel_view_patterns') }}</xf:button>
+	<xf:button href="{{ link('bot-intel/export') }}" icon="download">{{ phrase('bot_intel_download_json') }}</xf:button>
+</xf:pageaction>
+
+<style>
+.botIntelGrid
+{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 12px;
+}
+
+.botIntelCard
+{
+	padding: 16px;
+	border: 1px solid rgba(0, 0, 0, .08);
+	border-radius: 10px;
+	background: linear-gradient(180deg, rgba(255, 255, 255, .88), rgba(245, 248, 250, .96));
+	box-shadow: 0 10px 24px rgba(18, 38, 63, .06);
+}
+
+.botIntelEyebrow
+{
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: #5d6f82;
+}
+
+.botIntelValue
+{
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 1;
+	margin-top: 6px;
+	color: #17212b;
+}
+
+.botIntelTriplet
+{
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px;
+	margin-top: 14px;
+}
+
+.botIntelMetric dt
+{
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: #74879b;
+}
+
+.botIntelMetric dd
+{
+	margin: 4px 0 0;
+	font-size: 21px;
+	font-weight: 700;
+	color: #17212b;
+}
+
+.botIntelSubtle
+{
+	margin-top: 12px;
+	font-size: 12px;
+	color: #5d6f82;
+	line-height: 1.5;
+}
+
+.botIntelTag
+{
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 999px;
+	background: #e7eef5;
+	color: #294766;
+	font-size: 11px;
+	font-weight: 700;
+}
+
+.botIntelTag + .botIntelTag
+{
+	margin-left: 6px;
+}
+
+.botIntelCellMain
+{
+	font-weight: 700;
+	color: #17212b;
+}
+
+.botIntelCellMeta
+{
+	margin-top: 4px;
+	font-size: 12px;
+	color: #63778c;
+	line-height: 1.45;
+}
+
+.botIntelStatLine
+{
+	font-size: 12px;
+	line-height: 1.5;
+	color: #4e6276;
+}
+</style>
+
+<xf:if is="$botIntelMode == 'monitor'">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body block-row">{{ phrase('bot_intel_monitor_mode_notice') }}</div>
+		</div>
+	</div>
+</xf:if>
+
+<div class="block">
+	<div class="block-container">
+		<h3 class="block-header">{{ phrase('bot_intel_live_comparison') }}</h3>
+		<div class="block-body block-row">
+			<div class="botIntelGrid">
+				<div class="botIntelCard">
+					<div class="botIntelEyebrow">{{ phrase('bot_intel_bot_intel_detections') }}</div>
+					<div class="botIntelValue">{$comparison.bot_intel.total|number}</div>
+					<dl class="botIntelTriplet">
+						<div class="botIntelMetric">
+							<dt>Guests</dt>
+							<dd>{$comparison.bot_intel.guests|number}</dd>
+						</div>
+						<div class="botIntelMetric">
+							<dt>Members</dt>
+							<dd>{$comparison.bot_intel.members|number}</dd>
+						</div>
+						<div class="botIntelMetric">
+							<dt>Robots</dt>
+							<dd>{$comparison.bot_intel.robots|number}</dd>
+						</div>
+					</dl>
+					<div class="botIntelSubtle">
+						Bot Intel counts verified robots plus likely bots that XenForo would normally leave inside the guest bucket.
+					</div>
+				</div>
+
+				<div class="botIntelCard">
+					<div class="botIntelEyebrow">{{ phrase('bot_intel_xenforo_detections') }}</div>
+					<div class="botIntelValue">{$comparison.xenforo.total|number}</div>
+					<dl class="botIntelTriplet">
+						<div class="botIntelMetric">
+							<dt>Guests</dt>
+							<dd>{$comparison.xenforo.guests|number}</dd>
+						</div>
+						<div class="botIntelMetric">
+							<dt>Members</dt>
+							<dd>{$comparison.xenforo.members|number}</dd>
+						</div>
+						<div class="botIntelMetric">
+							<dt>Robots</dt>
+							<dd>{$comparison.xenforo.robots|number}</dd>
+						</div>
+					</dl>
+					<div class="botIntelSubtle">
+						XenForo stock detection is the baseline: user-agent substring matches only, with no heuristic bot reclassification.
+					</div>
+				</div>
+
+				<div class="botIntelCard">
+					<div class="botIntelEyebrow">{{ phrase('bot_intel_detection_delta') }}</div>
+					<div class="botIntelValue">{$comparison.delta.extra_robots_found|number}</div>
+					<dl class="botIntelTriplet">
+						<div class="botIntelMetric">
+							<dt>{{ phrase('bot_intel_extra_robots_found') }}</dt>
+							<dd>{$comparison.delta.extra_robots_found|number}</dd>
+						</div>
+						<div class="botIntelMetric">
+							<dt>{{ phrase('bot_intel_guests_reclassified') }}</dt>
+							<dd>{$comparison.delta.guests_reclassified|number}</dd>
+						</div>
+						<div class="botIntelMetric">
+							<dt>Cut-off</dt>
+							<dd><xf:date time="{$comparison.cut_off}" /></dd>
+						</div>
+					</dl>
+					<div class="botIntelSubtle">
+						The delta shows the live gap between what XenForo calls a guest and what Bot Intel identifies as robot traffic.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="block">
+	<div class="block-container">
+		<h3 class="block-header">{{ phrase('bot_intel_tracked_load') }}</h3>
+		<div class="block-body block-row">
+			<div class="botIntelGrid">
+				<div class="botIntelCard">
+					<div class="botIntelEyebrow">{{ phrase('bot_intel_last_hour') }}</div>
+					<div class="botIntelValue">{$lastHourSummary.total_requests|number}</div>
+					<div class="botIntelSubtle">
+						<span class="botIntelTag">Verified {$lastHourSummary.verified_robot|number}</span>
+						<span class="botIntelTag">Likely {$lastHourSummary.likely_robot|number}</span>
+						<span class="botIntelTag">Aggressive {$lastHourSummary.aggressive_robot|number}</span>
+						<span class="botIntelTag">Intervene {$lastHourSummary.enforced_interventions|number}</span>
+						<span class="botIntelTag">Would intervene {$lastHourSummary.simulated_interventions|number}</span>
+					</div>
+				</div>
+				<div class="botIntelCard">
+					<div class="botIntelEyebrow">{{ phrase('bot_intel_last_day') }}</div>
+					<div class="botIntelValue">{$lastDaySummary.total_requests|number}</div>
+					<div class="botIntelSubtle">
+						<span class="botIntelTag">Verified {$lastDaySummary.verified_robot|number}</span>
+						<span class="botIntelTag">Likely {$lastDaySummary.likely_robot|number}</span>
+						<span class="botIntelTag">Aggressive {$lastDaySummary.aggressive_robot|number}</span>
+						<span class="botIntelTag">Intervene {$lastDaySummary.enforced_interventions|number}</span>
+						<span class="botIntelTag">Would intervene {$lastDaySummary.simulated_interventions|number}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="block">
+	<div class="block-container">
+		<h3 class="block-header">{{ phrase('bot_intel_live_detection_rows') }}</h3>
+		<div class="block-body">
+			<xf:if is="$liveDetections is not empty">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>Visitor</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_ip') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_bot_intel_detections') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_xenforo_detections') }}</xf:cell>
+						<xf:cell>Session / 24h / Past / Day</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_path') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_last_hit') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_user_agent') }}</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$liveDetections" value="$row">
+						<xf:datarow>
+							<xf:cell>
+								<div class="botIntelCellMain">
+									<xf:if is="$row.username">{$row.username}<xf:else />Guest session</xf:if>
+								</div>
+								<div class="botIntelCellMeta">
+									{$row.bot_intel_label}
+									<xf:if is="$row.bot_classification != 'human'">
+										<br />{$row.classification_label} / {$row.action_label}
+									</xf:if>
+								</div>
+							</xf:cell>
+							<xf:cell>
+								<div class="botIntelCellMain">{$row.ip_text}</div>
+								<div class="botIntelCellMeta">First seen <xf:date time="{$row.first_seen}" /></div>
+							</xf:cell>
+							<xf:cell>
+								<div class="botIntelCellMain">{$row.bot_intel_name}</div>
+								<div class="botIntelCellMeta">
+									{$row.bot_intel_label}
+									<xf:if is="$row.reason_summary">
+										<br />{{ snippet($row.reason_summary, 80) }}
+									</xf:if>
+								</div>
+							</xf:cell>
+							<xf:cell>
+								<div class="botIntelCellMain">{$row.xenforo_name}</div>
+								<div class="botIntelCellMeta">{$row.xenforo_label}</div>
+							</xf:cell>
+							<xf:cell>
+								<div class="botIntelStatLine">Session: {$row.session_hits|number}</div>
+								<div class="botIntelStatLine">24h: {$row.requests_24h|number}</div>
+								<div class="botIntelStatLine">Past visits: {$row.past_visits|number}</div>
+								<div class="botIntelStatLine">Visits/day: {$row.visits_per_day|number}</div>
+							</xf:cell>
+							<xf:cell>
+								<div class="botIntelCellMain">{$row.current_path}</div>
+								<div class="botIntelCellMeta">Score {$row.bot_score|number}</div>
+							</xf:cell>
+							<xf:cell><xf:date time="{$row.last_hit}" /></xf:cell>
+							<xf:cell>{{ snippet($row.user_agent, 120) }}</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			<xf:else />
+				<div class="block-row">No live session data has been captured yet.</div>
+			</xf:if>
+		</div>
+	</div>
+</div>
+
+<xf:if is="$topFamilies is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-header">{{ phrase('bot_intel_top_families') }}</h3>
+			<div class="block-body">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bot_intel_robot_family') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_classification') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_action') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_requests') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_last_hit') }}</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$topFamilies" value="$row">
+						<xf:datarow>
+							<xf:cell>{$row.family_label}</xf:cell>
+							<xf:cell>{$row.classification_label}</xf:cell>
+							<xf:cell>{$row.action_label}</xf:cell>
+							<xf:cell>{$row.request_count|number}</xf:cell>
+							<xf:cell><xf:date time="{$row.last_hit}" /></xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:if is="$topIps is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-header">{{ phrase('bot_intel_top_ips') }}</h3>
+			<div class="block-body">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bot_intel_ip') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_robot_family') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_classification') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_action') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_requests') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_last_hit') }}</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$topIps" value="$row">
+						<xf:datarow>
+							<xf:cell>{$row.ip_text}</xf:cell>
+							<xf:cell>{$row.family_label}</xf:cell>
+							<xf:cell>{$row.classification_label}</xf:cell>
+							<xf:cell>{$row.action_label}</xf:cell>
+							<xf:cell>{$row.request_count|number}</xf:cell>
+							<xf:cell><xf:date time="{$row.last_hit}" /></xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:if is="$topPaths is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-header">{{ phrase('bot_intel_top_paths') }}</h3>
+			<div class="block-body">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bot_intel_path') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_robot_family') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_requests') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_last_hit') }}</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$topPaths" value="$row">
+						<xf:datarow>
+							<xf:cell>{$row.normalized_path}</xf:cell>
+							<xf:cell>{$row.family_label}</xf:cell>
+							<xf:cell>{$row.request_count|number}</xf:cell>
+							<xf:cell><xf:date time="{$row.last_hit}" /></xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:if is="$topUserAgents is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-header">{{ phrase('bot_intel_top_user_agents') }}</h3>
+			<div class="block-body">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bot_intel_user_agent') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_robot_family') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_classification') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_action') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_ip_count') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_requests') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_last_hit') }}</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$topUserAgents" value="$row">
+						<xf:datarow>
+							<xf:cell>{{ snippet($row.user_agent, 110) }}</xf:cell>
+							<xf:cell>{$row.family_label}</xf:cell>
+							<xf:cell>{$row.classification_label}</xf:cell>
+							<xf:cell>{$row.action_label}</xf:cell>
+							<xf:cell>{$row.distinct_ips|number}</xf:cell>
+							<xf:cell>{$row.request_count|number}</xf:cell>
+							<xf:cell><xf:date time="{$row.last_hit}" /></xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:if is="$minuteBursts is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-header">{{ phrase('bot_intel_minute_bursts') }}</h3>
+			<div class="block-body">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bot_intel_burst_minute') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_requests') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_ip_count') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_fingerprint_count') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_family_count') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_aggressive_robots') }}</xf:cell>
+						<xf:cell>Intervene / Would</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$minuteBursts" value="$row">
+						<xf:datarow>
+							<xf:cell><xf:date time="{$row.bucket_date}" /></xf:cell>
+							<xf:cell>{$row.total_requests|number}</xf:cell>
+							<xf:cell>{$row.distinct_ips|number}</xf:cell>
+							<xf:cell>{$row.distinct_fingerprints|number}</xf:cell>
+							<xf:cell>{$row.distinct_families|number}</xf:cell>
+							<xf:cell>{$row.aggressive_requests|number}</xf:cell>
+							<xf:cell>{$row.enforced_interventions|number} / {$row.simulated_interventions|number}</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:if is="$recentAggressive is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-header">{{ phrase('bot_intel_recent_aggressive') }}</h3>
+			<div class="block-body">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bot_intel_last_hit') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_ip') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_robot_family') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_action') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_score') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_path') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_user_agent') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_reason') }}</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$recentAggressive" value="$row">
+						<xf:datarow>
+							<xf:cell><xf:date time="{$row.last_hit}" /></xf:cell>
+							<xf:cell>{$row.ip_text}</xf:cell>
+							<xf:cell>{$row.family_label}</xf:cell>
+							<xf:cell>{$row.action_label}</xf:cell>
+							<xf:cell>{$row.score|number}</xf:cell>
+							<xf:cell>{$row.normalized_path}</xf:cell>
+							<xf:cell>{{ snippet($row.user_agent, 90) }}</xf:cell>
+							<xf:cell>{{ snippet($row.reason_summary, 90) }}</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</div>
+</xf:if>]]></template>
+  <template type="admin" title="bot_intel_patterns" version_id="1000010" version_string="1.0b"><![CDATA[<xf:title>{{ phrase('bot_intel_patterns') }}</xf:title>
+<xf:description>{{ phrase('bot_intel_patterns_desc') }}</xf:description>
+<xf:pageaction>
+	<xf:button href="{{ link('bot-intel') }}">{{ phrase('bot_intel_back_overview') }}</xf:button>
+	<xf:button href="{{ link('bot-intel/patterns-export', null, $filters) }}" icon="download">{{ phrase('bot_intel_download_patterns_json') }}</xf:button>
+</xf:pageaction>
+
+<style>
+.botIntelGrid
+{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 12px;
+}
+
+.botIntelCard
+{
+	padding: 16px;
+	border: 1px solid rgba(0, 0, 0, .08);
+	border-radius: 10px;
+	background: linear-gradient(180deg, rgba(255, 255, 255, .88), rgba(245, 248, 250, .96));
+	box-shadow: 0 10px 24px rgba(18, 38, 63, .06);
+}
+
+.botIntelEyebrow
+{
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: #5d6f82;
+}
+
+.botIntelValue
+{
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 1;
+	margin-top: 6px;
+	color: #17212b;
+}
+
+.botIntelSubtle
+{
+	margin-top: 12px;
+	font-size: 12px;
+	color: #5d6f82;
+	line-height: 1.5;
+}
+</style>
+
+<xf:form action="{{ link('bot-intel/patterns') }}" method="get" ajax="false" class="block">
+	<div class="block-container">
+		<h2 class="block-header">{{ phrase('bot_intel_filters') }}</h2>
+		<div class="block-body">
+			<xf:numberboxrow name="hours" value="{$filters.hours}" min="1" max="168" label="{{ phrase('bot_intel_window_hours') }}" />
+			<xf:selectrow name="family" value="{$filters.family}" label="{{ phrase('bot_intel_robot_family') }}">
+				<xf:foreach loop="$availableFamilies" key="$familyKey" value="$familyLabel">
+					<xf:option value="{$familyKey}">{$familyLabel}</xf:option>
+				</xf:foreach>
+			</xf:selectrow>
+			<xf:selectrow name="classification" value="{$filters.classification}" label="{{ phrase('bot_intel_classification') }}">
+				<xf:foreach loop="$classificationOptions" key="$key" value="$label">
+					<xf:option value="{$key}">{$label}</xf:option>
+				</xf:foreach>
+			</xf:selectrow>
+			<xf:selectrow name="action" value="{$filters.action}" label="{{ phrase('bot_intel_action') }}">
+				<xf:foreach loop="$actionOptions" key="$key" value="$label">
+					<xf:option value="{$key}">{$label}</xf:option>
+				</xf:foreach>
+			</xf:selectrow>
+			<xf:selectrow name="mode" value="{$filters.mode}" label="{{ phrase('bot_intel_mode') }}">
+				<xf:foreach loop="$modeOptions" key="$key" value="$label">
+					<xf:option value="{$key}">{$label}</xf:option>
+				</xf:foreach>
+			</xf:selectrow>
+			<xf:textboxrow name="ip" value="{$filters.ip}" label="{{ phrase('bot_intel_ip') }}" />
+			<xf:textboxrow name="user_agent" value="{$filters.user_agent}" label="{{ phrase('bot_intel_user_agent_contains') }}" />
+			<xf:textboxrow name="path" value="{$filters.path}" label="{{ phrase('bot_intel_path_contains') }}" />
+		</div>
+		<div class="block-footer">
+			<xf:button type="submit" class="button--primary">{{ phrase('bot_intel_apply_filters') }}</xf:button>
+			<xf:button href="{{ link('bot-intel/patterns') }}">{{ phrase('bot_intel_reset_filters') }}</xf:button>
+		</div>
+	</div>
+</xf:form>
+
+<div class="block">
+	<div class="block-container">
+		<h2 class="block-header">{{ phrase('bot_intel_filtered_summary') }}</h2>
+		<div class="block-body block-row">
+			<div class="botIntelGrid">
+				<div class="botIntelCard">
+					<div class="botIntelEyebrow">{{ phrase('bot_intel_requests') }}</div>
+					<div class="botIntelValue">{$summary.total_requests|number}</div>
+					<div class="botIntelSubtle">
+						<xf:if is="$summary.first_bucket">
+							{{ phrase('bot_intel_first_seen') }} {{ date_time($summary.first_bucket) }}<br />
+						</xf:if>
+						{{ phrase('bot_intel_active_minutes') }} {$summary.active_minutes|number}
+					</div>
+				</div>
+				<div class="botIntelCard">
+					<div class="botIntelEyebrow">{{ phrase('bot_intel_ip_count') }}</div>
+					<div class="botIntelValue">{$summary.distinct_ips|number}</div>
+					<div class="botIntelSubtle">
+						{{ phrase('bot_intel_user_agent') }} {$summary.distinct_user_agents|number}<br />
+						{{ phrase('bot_intel_path') }} {$summary.distinct_paths|number}
+					</div>
+				</div>
+				<div class="botIntelCard">
+					<div class="botIntelEyebrow">{{ phrase('bot_intel_family_count') }}</div>
+					<div class="botIntelValue">{$summary.distinct_families|number}</div>
+					<div class="botIntelSubtle">
+						<xf:if is="$summary.last_hit">
+							{{ phrase('bot_intel_last_seen') }} {{ date_time($summary.last_hit) }}<br />
+						</xf:if>
+						{{ phrase('bot_intel_intervene_would') }} {$summary.enforced_interventions|number} / {$summary.simulated_interventions|number}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="block">
+	<div class="block-container">
+		<h2 class="block-header">{{ phrase('bot_intel_matching_hits') }}</h2>
+		<div class="block-body">
+			<xf:if is="$patternHits is not empty">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bot_intel_burst_minute') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_robot_family') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_ip') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_classification') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_action') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_requests') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_path') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_user_agent') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_reason') }}</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$patternHits" value="$row">
+						<xf:datarow>
+							<xf:cell>{{ date_time($row.bucket_date) }}</xf:cell>
+							<xf:cell>{$row.family_label}</xf:cell>
+							<xf:cell>{$row.ip_text}</xf:cell>
+							<xf:cell>{$row.classification_label}</xf:cell>
+							<xf:cell>{$row.action_label}</xf:cell>
+							<xf:cell>{$row.request_count|number}</xf:cell>
+							<xf:cell>{$row.normalized_path}</xf:cell>
+							<xf:cell>
+								{{ snippet($row.user_agent, 100) }}
+								<div class="u-muted">
+									{{ phrase('bot_intel_request_method') }} {$row.request_method}
+									&middot; {{ phrase('bot_intel_last_hit') }} {{ date_time($row.last_hit) }}
+									&middot; {{ phrase('bot_intel_score') }} {$row.score|number}
+									<xf:if is="$row.cf_bot_score !== null">
+										&middot; {{ phrase('bot_intel_cf_bot_score') }} {$row.cf_bot_score|number}
+									</xf:if>
+								</div>
+							</xf:cell>
+							<xf:cell>{{ snippet($row.reason_summary, 120) }}</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			<xf:else />
+				<div class="block-row">{{ phrase('bot_intel_no_matching_hits') }}</div>
+			</xf:if>
+		</div>
+	</div>
+</div>
+
+<xf:if is="$patternTopUserAgents is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h2 class="block-header">{{ phrase('bot_intel_top_user_agents') }}</h2>
+			<div class="block-body">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bot_intel_user_agent') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_robot_family') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_classification') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_action') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_ip_count') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_requests') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_last_hit') }}</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$patternTopUserAgents" value="$row">
+						<xf:datarow>
+							<xf:cell>{{ snippet($row.user_agent, 110) }}</xf:cell>
+							<xf:cell>{$row.family_label}</xf:cell>
+							<xf:cell>{$row.classification_label}</xf:cell>
+							<xf:cell>{$row.action_label}</xf:cell>
+							<xf:cell>{$row.distinct_ips|number}</xf:cell>
+							<xf:cell>{$row.request_count|number}</xf:cell>
+							<xf:cell>{{ date_time($row.last_hit) }}</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:if is="$patternMinuteBursts is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h2 class="block-header">{{ phrase('bot_intel_minute_bursts') }}</h2>
+			<div class="block-body">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('bot_intel_burst_minute') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_requests') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_ip_count') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_fingerprint_count') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_family_count') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_aggressive_robots') }}</xf:cell>
+						<xf:cell>{{ phrase('bot_intel_intervene_would') }}</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$patternMinuteBursts" value="$row">
+						<xf:datarow>
+							<xf:cell>{{ date_time($row.bucket_date) }}</xf:cell>
+							<xf:cell>{$row.total_requests|number}</xf:cell>
+							<xf:cell>{$row.distinct_ips|number}</xf:cell>
+							<xf:cell>{$row.distinct_fingerprints|number}</xf:cell>
+							<xf:cell>{$row.distinct_families|number}</xf:cell>
+							<xf:cell>{$row.aggressive_requests|number}</xf:cell>
+							<xf:cell>{$row.enforced_interventions|number} / {$row.simulated_interventions|number}</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="bot_intel_rate_limited" version_id="1000010" version_string="1.0b"><![CDATA[<xf:title>{{ phrase('bot_intel_rate_limited_title') }}</xf:title>
+<xf:head option="metaNoindex"><meta name="robots" content="noindex, nofollow" /></xf:head>
+
+<div class="block">
+	<div class="block-container">
+		<h1 class="block-header">{{ phrase('bot_intel_rate_limited_title') }}</h1>
+		<div class="block-body block-row">
+			<p>{{ phrase('bot_intel_rate_limited_message', {
+				'robot': $detection.family_label,
+				'window': $detection.window_seconds
+			})|raw }}</p>
+
+			<xf:if is="$detection.action == 'throttle'">
+				<p><strong>Retry-After:</strong> {$detection.window_seconds} seconds.</p>
+			</xf:if>
+		</div>
+	</div>
+</div>]]></template>
+</templates>
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="botIntelAggressiveHits" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>20</default_value>
+    <edit_format_params>min=5</edit_format_params>
+    <relation group_id="botIntel" display_order="50"/>
+  </option>
+  <option option_id="botIntelAggressiveWindow" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>60</default_value>
+    <edit_format_params>min=15
+units={{ phrase('units_seconds') }}</edit_format_params>
+    <relation group_id="botIntel" display_order="40"/>
+  </option>
+  <option option_id="botIntelAhrefsAction" edit_format="radio" data_type="string" advanced="0">
+    <default_value>throttle</default_value>
+    <edit_format_params>allow = Allow and classify only
+throttle = Return 429 when Ahrefs exceeds its rate limit
+deny = Return 403 when Ahrefs exceeds its rate limit</edit_format_params>
+    <relation group_id="botIntel" display_order="60"/>
+  </option>
+  <option option_id="botIntelAhrefsHits" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>12</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="botIntel" display_order="70"/>
+  </option>
+  <option option_id="botIntelCustomRobotSignatures" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <edit_format_params>rows=8
+placeholder=bytespider = bytedance = ByteDance
+facebookexternalhit = meta = Meta</edit_format_params>
+    <relation group_id="botIntel" display_order="85"/>
+  </option>
+  <option option_id="botIntelEnabled" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="botIntel" display_order="10"/>
+  </option>
+  <option option_id="botIntelLogRetentionDays" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>14</default_value>
+    <edit_format_params>min=1
+units={{ phrase('units_days') }}</edit_format_params>
+    <relation group_id="botIntel" display_order="30"/>
+  </option>
+  <option option_id="botIntelMode" edit_format="radio" data_type="string" advanced="0">
+    <default_value>enforce</default_value>
+    <edit_format_params>enforce = Enforce throttles and denies
+monitor = Monitor only (classify and log, do not block)</edit_format_params>
+    <relation group_id="botIntel" display_order="15"/>
+  </option>
+  <option option_id="botIntelRateLimitedFamilies" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>ahrefs
+semrush
+mj12
+dotbot
+blexbot
+commoncrawl</default_value>
+    <edit_format_params>rows=5</edit_format_params>
+    <relation group_id="botIntel" display_order="80"/>
+  </option>
+  <option option_id="botIntelTrackLikelyBotsAsRobots" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="botIntel" display_order="20"/>
+  </option>
+</options>
+
