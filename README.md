@@ -79,7 +79,7 @@ Release archives are stored in:
 - Start in monitor mode and review `Would 429 throttle` and `Would 403 deny` events before enabling enforcement.
 - Use `Custom verified robot signatures` for site-specific crawler fingerprints that should be treated as known robots.
 - Pair Bot Intel with edge-layer controls such as Cloudflare rate limiting and targeted `robots.txt` rules for low-value crawl surfaces.
-- 
+  
 <p align="center">
   <a href="https://ko-fi.com/saveeditors">
     <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support on Ko-fi" />
