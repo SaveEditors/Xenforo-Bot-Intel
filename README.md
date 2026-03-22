@@ -1,11 +1,5 @@
 # Bot Intel
 
-<p align="center">
-  <a href="https://ko-fi.com/saveeditors">
-    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support on Ko-fi" />
-  </a>
-</p>
-
 > XenForo's default robot handling is based on static user-agent matching. When a crawler is not in that stock list, XenForo leaves it in the guest bucket instead of reclassifying it as bot traffic. The result is inflated guest counts, under-reported robot activity, and weaker visibility into crawler load.
 
 Bot Intel is a XenForo 2.3 add-on for forum operators who need better visibility into crawler traffic, more accurate guest counts, and practical controls for high-volume bot activity.
@@ -86,3 +80,9 @@ Release archives are stored in:
 - Use `Custom verified robot signatures` for site-specific crawler fingerprints that should be treated as known robots.
 - Pair Bot Intel with edge-layer controls such as Cloudflare rate limiting and targeted `robots.txt` rules for low-value crawl surfaces.
 - If you previously installed an older private preview under a different add-on ID, uninstall that preview before installing this public package.
+
+<p align="center">
+  <a href="https://ko-fi.com/saveeditors">
+    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support on Ko-fi" />
+  </a>
+</p>
